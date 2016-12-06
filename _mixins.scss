@@ -17,7 +17,7 @@
 }
 
 @mixin colors ($color) {
-  @for $j from 1 through 4 {
+  @for $j from 1 through 5 {
     $mod_color: adjust_hue($color, $j * 90);
     .c#{$j} {
       background-color: $mod_color;
@@ -28,12 +28,35 @@
     .c#{$j}d {
       background-color: darken($mod_color, 30%);
     }
+    .t#{$j} {
+      color: $mod_color;
+    }
+    .s#{$j} {
+      color: $mod_color;
+    }
+    @if $j == 5 {
+      .s#{$j} {
+        color: grayscale($mod_color);
+      } 
+      .t#{$j} {
+        color: grayscale($mod_color);
+      }
+    }
     @for $i from 1 through 4 {
       $mod_color2: adjust_hue($color, $i * 90);
       .c#{$j}-#{$i} {
         background-color: mix($mod_color, $mod_color2, 65%);
       }
-
     }
   }
 }
+//
+// @mixin font ($font-family, $fontsize: 50px, $color) {
+//   font-family: $font-family;
+//   font-size: $fontsize;
+//   @for $i from 1 through 5 {
+//     .t#{$i} {
+//       color:
+//     }
+//   }
+// }
